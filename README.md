@@ -16,4 +16,4 @@ Usage: meta-extractor.sh [options...] <br>
  
  # Example
 
- 
+ [!PoC.png](https://github.com/abletsoff/meta-extractor/blob/2ea67d2148f6c1ef53dc573005705f160b73512e/PoC.png)
