@@ -6,13 +6,13 @@ Tool for extracting metadata of public documents
 
 # Functionality 
 
-Usage: meta-extractor.sh [options...]
- -h	 display this help and exit
- -d	 target domain
- -f	 filetype for metadata extraction [pdf,doc,ppt], default - pdf
- -p	 path to download in / extract from
- -l	 extract from local directory instead of downloading
- -n	 maximum allowed number of files to download, default - 100
+Usage: meta-extractor.sh [options...] <br>
+ -h	 display this help and exit <br>
+ -d	 target domain <br>
+ -f	 filetype for metadata extraction [pdf,doc,ppt], default - pdf <br>
+ -p	 path to download in / extract from <br>
+ -l	 extract from local directory instead of downloading <br>
+ -n	 maximum allowed number of files to download, default - 100 <br>
  
  # Example
 
