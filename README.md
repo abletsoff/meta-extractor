@@ -1,5 +1,5 @@
 # meta-extractor
-Tool for extracting metadata of public documents
+Tool for extracting metadata from public documents
 
 # Prerequirements
 [exiftool](https://github.com/exiftool/exiftool) instalation
