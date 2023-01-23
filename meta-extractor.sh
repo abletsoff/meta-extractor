@@ -32,7 +32,7 @@ f_print_help () {
 		   "-d\t target domain\n" \
                    "-f\t filetype for metadata extraction [pdf,doc,ppt], default - pdf\n" \
 		   "-p\t path to download in / extract from\n" \
-		   "-l\t extract from local directory instead of downloading" \
+		   "-l\t extract from local directory instead of downloading\n" \
 		   "-n\t maximum allowed number of files to download, default - 100" 
 }
 
