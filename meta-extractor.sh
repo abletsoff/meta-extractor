@@ -29,11 +29,11 @@ f_meta_retriving () {
 f_print_help () {
 	echo -e "Usage: meta-extractor.sh [options...]\n" \
                    "-h\t display this help and exit\n" \
-				   "-d\t target domain\n" \
+		   "-d\t target domain\n" \
                    "-f\t filetype for metadata extraction [pdf,doc,ppt], default - pdf\n" \
-				   "-p\t path to download in / extract from\n" \
-				   "-l\t extract from local directory instead of downloading"
-				   "-n\t maximum allowed number of files to download, default - 100" 
+		   "-p\t path to download in / extract from\n" \
+		   "-l\t extract from local directory instead of downloading" \
+		   "-n\t maximum allowed number of files to download, default - 100" 
 }
 
 local_analyzing=0
@@ -57,6 +57,7 @@ if [ ! -d "$path" ]; then
 	mkdir $path
 fi
 cd $path
+echo "Info: working directory is $path"
 
 if [[ $local_analyzing -eq 0 ]]; then
 	if [ -z "$domain" ]; then
