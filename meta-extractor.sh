@@ -6,7 +6,9 @@ false_positive="Microsoft|PDF|Acrobat \d|Adobe |PowerPoint|^\d*$"
 f_google_extractor () {
 	url_allowed="[A-z,0-9,\/,\-,_,\.,~,&,=,\?,:]"
 	html=$(curl -k -A "${user_agent}" \
-	 	"https://www.google.com/search?q=site:${domain}+filetype:${filetype}&num=100" 2>/dev/null)
+		"https://www.google.com/search?q=site:${domain}+filetype:${filetype}"`
+		`"${keyword_operator}&num=100" 2>/dev/null) 
+	echo $var
 	urls=$(echo $html | grep -o -P \
 		"https?:\/\/[a-z,0-9,\.,\-]*${domain}${url_allowed}*\.(${filetype}|${filetype^^})")
 	array=($urls)
@@ -21,7 +23,7 @@ f_google_extractor () {
 }
 
 f_meta_retriving () {
-	echo -e "Extracted metadata: "
+	echo -e "\nExtracted metadata: "
 	exiftool -creator -author * 2>/dev/null | sed "s/^.*: //g" | \
 	   		grep -v -P "^===|^ |^$|${false_positive}" | sort -u	
 }
@@ -33,7 +35,8 @@ f_print_help () {
                    "-f\t filetype for metadata extraction [pdf,doc,ppt], default - pdf\n" \
 		   "-p\t path to download in / extract from\n" \
 		   "-l\t extract from local directory instead of downloading\n" \
-		   "-n\t maximum allowed number of files to download, default - 100" 
+		   "-n\t maximum allowed number of files to download, default - 100\n" \
+		   "-k\t keyword for more specific results"
 }
 
 local_analyzing=0
@@ -41,7 +44,7 @@ filetype="pdf"
 path="/tmp/meta-extraxtor_$(date '+%s')"
 download_num=100
 
-while getopts "hd:f:p:ln:" opt; do
+while getopts "hd:f:p:ln:k:" opt; do
     case $opt in
 	   	h)	f_print_help
             exit ;;
@@ -49,7 +52,8 @@ while getopts "hd:f:p:ln:" opt; do
         f)	filetype=$OPTARG;;
 		p)	path=$OPTARG;;
 		l)	local_analyzing=1;;
-		n)	download_num=$OPTARG
+		n)	download_num=$OPTARG;;
+		k)  keyword_operator="+intext:$OPTARG";;
     esac
 done
 
